@@ -1,0 +1,24 @@
+project:
+  type: default
+  output-dir: docs
+
+format:
+  revealjs:
+    title: "Digitalization and Datacenter Interplay"
+    subtitle: "Datacenter Technical Seminar (*Postgrunn - University of South-Eastern Norway - September 2025*)"
+    footer: "Datacenter Technical Seminar (*Postgrunn - University of South-Eastern Norway - September 2025*)"
+    author: 
+      - name: "Jordi Mateo Fornés"
+        affiliation: "Distributed Computing Group, University of Lleida"
+    theme: simple
+    transition: fade
+    slide-number: true
+    incremental: true
+    chalkboard: false
+    pointer: flase
+    toc: false
+    toc-depth: 1
+
+execute:
+  freeze: auto
+  echo: false
