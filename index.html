@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.34">
+
+  <meta name="author" content="Jordi Mateo Fornés">
+  <title>Digitalization and Datacenter Interplay</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-2c1b5f745a11cfad616ebade4a4a7d24.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Digitalization and Datacenter Interplay</h1>
+  <p class="subtitle">Datacenter Technical Seminar (<em>Postgrunn - University of South-Eastern Norway - September 2025</em>)</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jordi Mateo Fornés 
+</div>
+        <p class="quarto-title-affiliation">
+            Distributed Computing Group, University of Lleida
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="who-am-i" class="slide level2">
+<h2>Who am I?</h2>
+
+<img data-src="figures/dcg.png" class="r-stretch"><aside class="notes">
+<p>Just a brief presentation, I am an associate professor and researcher in the field of distributed computing at a small university in Spain. I am a member of the Distributed Computing Group at the University of Lleida, a city located about two hours from Barcelona. As you can see from our corporate slide, our group is small.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="introduction" class="slide level2 smaller">
+<h2>Introduction</h2>
+
+<img data-src="figures/evolution.png" class="r-stretch"><div class="fragment" style="text-align: center;">
+<h3 id="data-centers">Data Centers</h3>
+</div>
+<aside class="notes">
+<p>Sam asked me to provide an overview of data centers from a computational perspective. I won’t be presenting my own work, but rather discussing the evolution and scale of data centers and the challenges they present in this era. Let’s start by taking a quick look at the recent history of technology. Our journey began with the Internet era, connecting us …and thanks to virtualization, we moved into the era of cloud computing, enabling massive scale, but technology didn’t stop there. We’re now seeing a shift towards a cloud continuum where edge devices, fog servers, and the central cloud coexist and collaborate. And most recently, we’ve seen the explosive rise of AI. But what is the silent, unseen foundation that enables this evolution? <span class="math inline">\(\downarrow\)</span> The answer is Data Centers.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-this-talk-about" class="slide level2 smaller">
+<h2>What is this talk about…</h2>
+<h4 id="modern-data-centers-must-manage-diverse-workloads-each-with-unique-demands-on-shared-heterogeneous-hardware.-moreover-modern-data-centers-are-often-geo-distributed-forming-a-network-of-multiple-facilities-rather-than-a-single-monolithic-center.">Modern data centers must manage <em>diverse workloads</em>, each with <em>unique demands</em> on shared, <em>heterogeneous hardware</em>. Moreover, modern data centers are often <em>geo-distributed</em>, forming a network of multiple facilities rather than a single monolithic center.</h4>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/task_management.png"></p>
+<figcaption>Overview of the talk purpose. <em>Image generated by the author using AI (Gemini 2.5 Flash)</em>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:65%;">
+<ol type="1">
+<li class="fragment"><strong>Workload diversity</strong>: Different workloads have distinct <em>personalities</em> and <em>resource requirements</em><br>
+</li>
+<li class="fragment"><strong>Heterogeneous hardware</strong>: CPUs, GPUs, TPUs, NICs</li>
+<li class="fragment"><strong>Multi-datacenter coordination</strong>: Geo-distributed load balancing</li>
+<li class="fragment"><strong>Quality of Service (QoS)</strong>: Ensuring SLA criteria are met for all workloads and services types.</li>
+<li class="fragment"><strong>Resilience</strong>: Maintaining service availability in the face of failures or unexpected changes.</li>
+</ol>
+<div class="fragment" style="text-align: center">
+<h4 id="understanding-these-challenges-and-exploring-current-solutions-is-the-key-focus-of-this-talk.">Understanding these challenges and exploring current solutions is the key focus of this talk.</h4>
+</div>
+</div></div>
+<aside class="notes">
+<p>This talk is all about the complexity of modern data centers. <span class="math inline">\(\downarrow\)</span> We have workload diversity. A data center might be running a real-time video game alongside a massive AI training job. These different applications have unique <strong>personalities</strong> and resource demands. <span class="math inline">\(\downarrow\)</span> It’s not just CPUs anymore. We’ve got GPUs, TPUs, … <span class="math inline">\(\downarrow\)</span> Our systems are no longer a single, monolithic building. They are geo-distributed, forming a network of multiple facilities. This creates new challenges for coordination, like balancing loads across different continents while dealing with data locality and latency. <span class="math inline">\(\downarrow\)</span> How do we ensure that a user’s critical transaction gets priority over a background analysis job? <span class="math inline">\(\downarrow\)</span> In a world of constant change and potential failures, how do we maintain service availability and ensure nothing goes down? <span class="math inline">\(\downarrow\)</span> So, the key focus of this talk is to understand these challenges and explore some of the solutions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-a-workload" class="slide level2 smaller">
+<h2>What is a workload?</h2>
+<p>A <strong>workload</strong> is the total demand that processes and users place on a computing system over a specific period.</p>
+<ol type="1">
+<li class="fragment"><strong>Batch Processing</strong>: Large volumes of data processed in chunks (e.g., ETL jobs).</li>
+<li class="fragment"><strong>Interactive Processing</strong>: Real-time user interactions (e.g., web applications).</li>
+<li class="fragment"><strong>Stream Processing</strong>: Continuous data streams processed in real-time (e.g., IoT data).</li>
+<li class="fragment"><strong>AI/ML Workloads</strong>: Resource-intensive training and inference tasks (e.g., neural networks).</li>
+<li class="fragment"><strong>High-Performance Computing (HPC)</strong>: Compute-intensive simulations and modeling (e.g., scientific research).</li>
+</ol>
+<div class="fragment">
+<h4 id="a-video-streaming-service-netflix-is-an-application-while-the-workload-is-the-varying-demand-of-that-service-as-thousands-of-users-simultaneously-stream-videos-at-different-resolutions.">A video streaming service (<em>Netflix</em>) is an application while the workload is the varying demand of that service as thousands of users simultaneously stream videos at different resolutions.</h4>
+</div>
+<aside class="notes">
+<p>It’s easy to confuse a workload with a simple application. The key is to remember that a workload is dynamic—it’s the total demand a system has, not just one app. We can categorize them into different types. <span class="math inline">\(\downarrow\)</span> Batch Processing is for heavy but scheduled tasks, like a financial report at the end of the day. <span class="math inline">\(\downarrow\)</span> Then we have Interactive Processing, which handles real-time user requests, like a social media app. Stream Processing is similar, but it deals with a continuous flow of data, like from a sensor. <span class="math inline">\(\downarrow\)</span> A new and important type is AI/ML workloads, which are very hungry for resources, especially GPUs.<span class="math inline">\(\downarrow\)</span> Finally, there’s High-Performance Computing, which has been around for decades for things like scientific simulations.<span class="math inline">\(\downarrow\)</span> To make this clear, think of Netflix. The Netflix application is the software itself. But the workload is the constantly changing demand it puts on the data center as millions of users stream shows at different resolutions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-a-data-center" class="slide level2 smaller">
+<h2>What is a Data Center?</h2>
+<p>A <strong>Data Center</strong> is a facility that houses a large number of servers and networking equipment (<strong>Heterogeneous resources</strong>) to provide computing resources for various applications and services (<strong>diverse workloads</strong>).</p>
+
+<img data-src="figures/datacenter.png" class="r-stretch quarto-figure-center"><p class="caption">Data Center Complexity and Heterogeneity.</p><h4 class="center fragment" id="it-is-a-complex-distributed-system-that-manages-the-flow-of-data-and-compute-resources-to-meet-the-demands-of-users-and-applications.">It is a complex distributed system that manages the flow of data and compute resources to meet the demands of users and applications.</h4>
+<aside class="notes">
+<p>So, we’ve talked about the different types of workloads. Now let’s look at the system that handles them: the data center. At its heart, a data center is a huge building full of computers and equipment. The image shows the sheer variety of heterogeneous resources inside: different CPUs, storage drives, and networking gear. They all have different strengths and weaknesses. A data center’s main job is to intelligently match the right hardware to the right workload. It has to serve both an AI training job that needs a lot of GPU power and a database that needs fast storage—all at the same time. <span class="math inline">\(\downarrow\)</span> So, a data center is not just a building. It’s a complex distributed system that constantly manages the flow of data and resources to meet all these different demands.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cloud-computing-era" class="slide level2">
+<h2>Cloud Computing Era</h2>
+<h4 id="cloud-computing-abstracts-away-the-hardware-offering-compute-resources-as-a-utility.-users-consume-services-e.g.-vms-storage-functions-and-stop-managing-the-physical-infrastructure."><strong>Cloud computing</strong> abstracts away the hardware, offering compute resources as a utility. Users consume services (e.g., VMs, storage, functions) and stop managing the physical infrastructure.</h4>
+
+<img data-src="figures/pizza.png" class="fragment center r-stretch"><div class="fragment center">
+<blockquote>
+<p>AWS EC2 achieves <strong>99.99% uptime</strong> for cloud services.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>For the last two decades, cloud computing has been the main way we handle data center complexity. The idea is simple: you don’t manage the physical hardware anymore; you just use computing as a service, like a utility. <span class="math inline">\(\downarrow\)</span> The image here uses a pizza analogy to explain this. If you make a pizza at home from scratch, you do everything. This is like the old way of doing things—you manage all your own servers and software. With Infrastructure as a Service, someone provides the basic parts (ingredients), and you still have to build and bake it. With Platform as a Service, they make the pizza for you and deliver it. You just need to serve it. And with Software as a Service, it’s like eating at a restaurant—everything is taken care of. <span class="math inline">\(\downarrow\)</span> This approach was very successful and reliable, which is why services like AWS can promise nearly perfect uptime. The most important thing to remember is this: even in the cloud, someone still has to manage the physical servers.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="data-centers-and-power-plants" class="slide level2">
+<h2>Data Centers and Power Plants</h2>
+<div class="fragment center">
+<p>Both manage <em>complex</em> <strong>distributed</strong>, <em>dynamic</em> flows — one of electricity, one of compute/data.</p>
+</div>
+<div class="fragment center">
+<h4 id="shared-challenges">Shared Challenges</h4>
+<ol type="1">
+<li class="fragment"><strong>Resource Management</strong>: Heterogeneous hardware (CPUs, GPUs) vs.&nbsp;generators (coal, solar).</li>
+<li class="fragment"><strong>Workload Management</strong>: Steady loads + scheduled peaks (e.g., daily spikes in web traffic vs.&nbsp;industrial power demand).</li>
+<li class="fragment"><strong>Spiky Demands</strong>: AI training bursts vs.&nbsp;storm-driven power surges.</li>
+</ol>
+</div>
+<aside class="notes">
+<p>To understand data centers better, let’s compare them to something we all know: a power plant. <span class="math inline">\(\downarrow\)</span> They both seem different, but they are very much alike. Both systems are all about managing a complex, dynamic flow—one of electricity, the other of data. <span class="math inline">\(\downarrow\)</span> They face the same challenges. <span class="math inline">\(\downarrow\)</span> A power plant has to balance different sources like coal, solar, and wind. A data center has to do the same with its own different resources, like CPUs and GPUs. <span class="math inline">\(\downarrow\)</span> A power plant deals with daily spikes in electricity use. A data center handles daily spikes in web traffic. <span class="math inline">\(\downarrow\)</span> A sudden storm can cause a huge surge in power demand. A viral online event or a massive AI job can cause a sudden, huge spike in a data center. Both are experts at balancing supply and demand.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="beyond-the-infrastructure" class="slide level2">
+<h2>Beyond the infrastructure</h2>
+<p>This complexity includes not just IT equipment, but also massive <strong>power distribution</strong> and <strong>cooling systems</strong> that consume a significant portion of the total energy.</p>
+<ul>
+<li class="fragment">As much as <strong>40%</strong> of a data center’s total energy consumption can be related to cooling systems alone.</li>
+<li class="fragment">Data center energy demands are projected to consume as much as <span class="math inline">\(9%\)</span> of US annual electricity generation by the year 2030.</li>
+</ul>
+<aside class="notes">
+<p>Data centers are complex because of more than just the servers, workloads, data… They also have huge power and cooling systems that use a lot of energy. <span class="math inline">\(\downarrow\)</span> 40% of a data center’s total energy consumption can be related to cooling systems alone. <span class="math inline">\(\downarrow\)</span> The final point is about scale. Data center energy demands are on track to consume as much as 9% of the US’s total annual electricity generation by the year 2030. This is no longer just a technical problem; it’s a global energy challenge.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="assignment-problems" class="slide level2">
+<h2>Assignment Problems</h2>
+<p>Given two sets (<em>tasks</em> ↔︎ <em>resources</em>), find the optimal one-to-one mapping to <strong>mix/max criterias</strong>, under constraints.</p>
+<ul>
+<li class="fragment"><p><strong>Geo-distributed traffic</strong>: Assign incoming user traffic to the most suitable data center based on latency and load.</p></li>
+<li class="fragment"><p><strong>Workload placement</strong>: Assign diverse workloads to specific servers (<em>resource needs and current utilization</em>).</p></li>
+<li class="fragment"><p><strong>Task scheduling</strong>: Assign individual tasks to specific CPU, GPUs based on profile and availability.</p></li>
+</ul>
+<div class="fragment" style="text-align: center;">
+<p><strong>Multilayer Challenge</strong></p>
+</div>
+<aside class="notes">
+<p>We’ve established that a data center is a lot like a power plant, balancing supply and demand. Now, let’s look at the digital version of that balancing act: the assignment problem. At its core, it’s about finding the best match between what we have and what we need. (<em>pause</em>) But it’s not just a single problem. The complexity is compounded because it’s a cascade of interconnected assignment problems happening at different layers of the infrastructure. <span class="math inline">\(\downarrow\)</span> At the highest level, you’re assigning incoming user traffic to the best geo-distributed data center to minimize latency or other factors. <span class="math inline">\(\downarrow\)</span> Within that data center, you’re assigning diverse workloads to specific servers and racks based on their resource needs and the server’s current load. <span class="math inline">\(\downarrow\)</span> And at the lowest level, you’re assigning individual tasks to specific CPU cores, GPUs, or other specialized hardware to ensure optimal performance. This multi-layered challenge.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="assignment-problems-matter-of-scale" class="slide level2">
+<h2>Assignment Problems: Matter of scale</h2>
+<p>A single large-scale data center:</p>
+<div class="fragment">
+<p>~100,000 servers</p>
+</div>
+<div class="fragment">
+<p>~1,000,000 CPU cores</p>
+</div>
+<div class="fragment">
+<p>~10,000 GPUs / TPUs</p>
+</div>
+<div class="fragment">
+<p>~1,000,000 concurrent tasks (heterogeneous workloads and constraints)</p>
+</div>
+<div class="fragment">
+<p>…and over 1,000,000,000 possible assignments</p>
+</div>
+<div class="fragment" style="text-align: center;">
+<h4 id="and-this-is-just-one-data-center-how-many-more-are-out-there">…and this is just one data center! How many more are out there?</h4>
+</div>
+<aside class="notes">
+<p>Now, to fully grasp this challenge, you need to understand the scale we’re talking about. <span class="math inline">\(\downarrow\)</span> A single large-scale data center can contain over 100,000 servers. <span class="math inline">\(\downarrow\)</span> That’s over 1 million CPU cores and 10,000 GPUs/TPUs working together.<span class="math inline">\(\downarrow\)</span> And at any given moment, those resources are managing over 1 million concurrent, heterogeneous tasks. (<em>pause</em>). The number of possible assignments for those one million tasks is astronomical. .<span class="math inline">\(\downarrow\)</span> And this is just one data center. The problem becomes even more complex when you consider the interconnectedness of hyperscale, multi-region, and edge data centers.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="assignment-problems-task-allocation" class="slide level2">
+<h2>Assignment Problems: Task allocation</h2>
+<div class="columns">
+<div class="column fragment" style="width:45%;">
+<p>Task CPU/GPU profile, latency tolerance, memory needs.</p>
+</div><div class="column fragment" style="width:10%;">
+<p><span class="math display">\[\Leftrightarrow\]</span></p>
+</div><div class="column fragment" style="width:45%;">
+<p>Generator capacity, transmission constraints.</p>
+</div></div>
+<div class="columns">
+<div class="column fragment" style="width:45%;">
+<p>Hardware limits, affinity/anti-affinity rules.</p>
+</div><div class="column fragment" style="width:10%;">
+<p><span class="math display">\[\Leftrightarrow\]</span></p>
+</div><div class="column fragment" style="width:45%;">
+<p>Network topology, stability margins.</p>
+</div></div>
+<div class="columns">
+<div class="column fragment" style="width:45%;">
+<p>Minimize idle cycles, Maximize throughput.</p>
+</div><div class="column fragment" style="width:10%;">
+<p><span class="math display">\[\Leftrightarrow\]</span></p>
+</div><div class="column fragment" style="width:45%;">
+<p>Minimize energy loss, meet demand at all buses.</p>
+</div></div>
+<div class="center fragment">
+<blockquote>
+<p>The problem is NP-hard, but there are techniques to find near-optimal solutions efficiently.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>We’ve talked about the assignment problem as a massive challenge. Now, let’s look at a very specific, one that happens millions of times: task allocation. How do we assign an incoming task—like a user’s web request—to the best possible resource? <span class="math inline">\(\downarrow\)</span> To do this, we first need to understand the inputs. CPU/GPU needs, memory requirements, and how much latency it can tolerate. just like a power grid operator needing to know the capacity of each power generator.<span class="math inline">\(\downarrow\)</span> Second, we have to deal with constraints. This includes hardware limits, but also things like affinity rules. These are the digital equivalent of a power grid’s network topology and stability rules. <span class="math inline">\(\downarrow\)</span> Finally, we have our objectives. For example, we want to assign tasks in a way that minimizes idle cycles and maximizes system throughput. Just like a power grid’s goal of minimizing energy loss and meeting demand at all times. <span class="math inline">\(\downarrow\)</span> This is an NP-hard problem. This means finding the perfect solution is almost impossible for a system of this size. But, we have techniques to find near-optimal solutions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="task-allocation-in-the-cloud-era" class="slide level2 smaller">
+<h2>Task allocation in the Cloud Era</h2>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 27%">
+<col style="width: 24%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Technique</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Benefits</strong></th>
+<th><strong>Limitations</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Heuristics</strong></td>
+<td>Rule-based, fast decisions</td>
+<td>Low overhead, scalable</td>
+<td>Suboptimal solutions</td>
+</tr>
+<tr class="even">
+<td><strong>Approximation</strong></td>
+<td>Near-optimal with performance bounds</td>
+<td>Balances optimality, efficiency</td>
+<td>Higher complexity</td>
+</tr>
+<tr class="odd">
+<td><strong>Metaheuristics</strong></td>
+<td>Iterative optimization for complex problems</td>
+<td>Near-optimal solutions</td>
+<td>Computationally intensive</td>
+</tr>
+<tr class="even">
+<td><strong>Constraint Programming</strong></td>
+<td>Constraint satisfaction</td>
+<td>Complex constraints</td>
+<td>Scalability issues</td>
+</tr>
+<tr class="odd">
+<td><strong>Machine Learning</strong></td>
+<td>Data-driven, adaptive allocation</td>
+<td>Dynamic workloads</td>
+<td>Needs training, and high compute cost</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>For a long time, we solved the task allocation problem using traditional optimization techniques. <span class="math inline">\(\downarrow\)</span> We started with simple heuristics, which are a set of hand-written rules, like “put the new task on the server with the least CPU usage.” They are fast and scalable but often lead to less-than-ideal results. As things got more complex, we moved to more advanced methods. Approximation and Metaheuristics could find solutions that were close enough to the perfect one. And Constraint Programming was great for handling complex rules. These traditional approaches worked well for the predictable workloads. However, with the rise of AI and dynamic workloads, these methods started to hit their limits. Instead of us having to pre-define every rule, ML allows the system to learn the best allocation strategy directly from data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ml-approaches-to-task-allocation" class="slide level2 smaller">
+<h2>ML Approaches to Task Allocation</h2>
+<div class="fragment">
+<h4 id="input-state">Input (State)</h4>
+<p><em>Real-time metrics on CPU/GPU usage, network traffic, task latency, memory footprint, I/O wait times, task type, deadline, dependency graph</em></p>
+</div>
+<div class="fragment">
+<h4 id="model-policy-predictor">Model (Policy / Predictor)</h4>
+<p><em>Learns optimal placement via reinforcement learning (rewarding perfomance criteria, and penalizing SLA violations) or graph neural networks (learn embeddings and relationships).</em></p>
+</div>
+<div class="fragment">
+<h4 id="output-decision">Output (Decision)</h4>
+<ul>
+<li class="fragment"><strong>Predictive scheduling</strong>: anticipate workload trends</li>
+<li class="fragment"><strong>Adaptive load balancing</strong>: live migration or scaling based on real-time metrics</li>
+<li class="fragment"><strong>Proactive allocation</strong>: pre-warm compute/storage in anticipation of spikes</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="citation" data-cites="jian2024drs">Jian et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span> achieved a ~27% increase in resource utilization and reduced load imbalance by a factor of ~2.9× compared to the default Kubernetes scheduler using deep and reinforcement learning techniques.</p>
+</div>
+<aside class="notes">
+<p>So, how exactly does a machine learning approach work? <span class="math inline">\(\downarrow\)</span> First, the system needs to understand the current state. Its input is real-time data on everything from CPU/GPU usage and network traffic to task deadlines. This is the data the system will learn from. <span class="math inline">\(\downarrow\)</span> Second, we have the model. This is the brain of the system. It learns the best way to place tasks by using techniques like reinforcement learning. It’s rewarded when it makes a good decision—like meeting a performance goal—and penalized when it makes a bad one, like a service failure. <span class="math inline">\(\downarrow\)</span> And finally, the model generates an output—a decision. This can be a proactive or reactive action. It can predict future workload trends, adaptively balance loads in real-time, or even pre-allocate resources in anticipation of a spike. <span class="math inline">\(\downarrow\)</span> A recent research paper achieved a ~27% increase in resource utilization and a significant reduction in load imbalance compared to the default scheduler. This shows that ML-based approaches are already outperforming traditional methods.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="right-sizing-resources-hybrid-strategy" class="slide level2">
+<h2>Right-Sizing Resources: Hybrid Strategy</h2>
+<p>The paper by <span class="citation" data-cites="chen2024learning">Chen et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span> addresses this by proposing a two-tiered system for online resource allocation, decoupling the problem to enhance scalability.</p>
+
+<img data-src="./figures/Hybrid%20Strategy.png" class="r-stretch"><aside class="notes">
+<p>Now, let’s look at a real-world example of how it’s being used in a hybrid approach. The paper by Chen et al.&nbsp;proposes a two-tiered system that combines the best of both worlds: machine learning for high-level strategy and traditional optimization for low-level execution. <span class="math inline">\(\downarrow\)</span> The first tier is Strategic Planning.It doesn’t decide where every single task goes. Instead, it learns the optimal order or type of servers to use for allocation. This strategic decision helps with long-term goals like ensuring fault tolerance and overall efficiency. <span class="math inline">\(\downarrow\)</span> The second tier is Tactical Execution. This is where a traditional solver takes over. Guided by the RL agent’s plan, it makes the real-time, precise task placement decisions. It’s computationally intensive, but because it’s only solving a small, focused part of the problem, it can quickly and efficiently map individual tasks to the best servers, making sure all the technical requirements are met.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="from-algorithms-to-systems" class="slide level2">
+<h2>From Algorithms to Systems</h2>
+<p>Efficient task allocation is not just about the algorithm; it’s also about the underlying technologies.</p>
+<div class="fragment center">
+<p>Orchestrator <span class="math inline">\(\Rightarrow\)</span> Workload Manager <span class="math inline">\(\Rightarrow\)</span> Execution Units</p>
+</div>
+<ul>
+<li class="fragment"><strong>Containers</strong>: portable, consistent, lightweight</li>
+<li class="fragment"><strong>Unikernels</strong>: single-purpose, minimal, fast</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Orchestration now spans multi-region and global infrastructure.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>We’ve talked about how a machine learning model can make smart decisions. But that model can’t work alone. It needs a whole system to put its decisions into practice. Efficient task allocation isn’t just about the algorithm; it’s about the entire underlying technology stack. <span class="math inline">\(\downarrow\)</span> At the center of this is the Orchestrator. This is the brain that takes the allocation decision and manages the entire workload lifecycle—from creating and scaling a task to migrating it and tearing it down. It makes the whole data center behave like a single, unified computer. <span class="math inline">\(\downarrow\)</span> The orchestrator relies on specialized execution units to run the workloads. For a long time, these have been containers. <span class="math inline">\(\downarrow\)</span> A more recent technology is the unikernel. These are even more minimal <span class="math inline">\(\downarrow\)</span> The problem is no longer confined to a single data center. As we’ve seen, hyperscale providers operate across multiple regions and a globally distributed infrastructure. The orchestration challenge now extends across this entire network, which brings us to our next set of challenges.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="user-perspective-on-task-allocation" class="slide level2">
+<h2>User Perspective on Task Allocation</h2>
+<ul>
+<li class="fragment"><strong>Dev</strong>: Expect efficient resource utilization and minimal latency for their applications. <em>I need tasks to auto-scale without manual tweaking.</em></li>
+<li class="fragment"><strong>Ops</strong>: Require reliable performance and easy management of resources. <em>I need visibility into resource usage and performance metrics.</em></li>
+<li class="fragment"><strong>Finance</strong>: Look for cost-effective solutions and predictable budgeting. <em>I need to optimize costs while meeting SLAs.</em></li>
+<li class="fragment"><strong>End Users</strong>: Seek high availability and responsiveness. <em>Why is my app slow when the cloud is infinite?</em></li>
+</ul>
+<aside class="notes">
+<p>We’ve discussed about the technical challenge of task allocation—the algorithms, the orchestrators, and the containers. But why does all this matter? It matters because the success of our systems is measured by their impact on real people. Task allocation is a classic problem where different people have wildly different, and often competing, expectations. <span class="math inline">\(\downarrow\)</span> For a Developer, the expectation is about efficiency and ease of use. They need systems that can auto-scale their applications without them having to think about it. <span class="math inline">\(\downarrow\)</span> For Operations teams, it’s about reliability and visibility. They need systems that are predictable and provide clear metrics to diagnose problems quickly. <span class="math inline">\(\downarrow\)</span> The Finance team has a completely different perspective. They need cost-effective solutions and predictable budgeting, so the system must be able to optimize costs without sacrificing performance. <span class="math inline">\(\downarrow\)</span> And finally, for the End User, it all comes down to a simple, fundamental expectation: high availability and responsiveness.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="faults-in-dc-metas-problem" class="slide level2">
+<h2>Faults in DC: Meta’s problem</h2>
+<ul>
+<li class="fragment">A snake in a power sub-station caused a <em>3%</em> capacity loss in one fault domain</li>
+<li class="fragment">Critical services on affected servers triggered user-visible errors</li>
+<li class="fragment">Traffic was drained from the entire data center, despite 97% of capacity remaining</li>
+</ul>
+<div class="fragment center">
+<blockquote>
+<p>How can we tolerate sub-data center faults without draining traffic?</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>Let’s conclude this section by looking at a real-world example of the assignment problem in action from Meta. A few years ago, a very small and localized issue <span class="math inline">\(\downarrow\)</span> a snake in a power sub-station—caused a 3% capacity loss in one of their data center’s fault domains. This tiny failure, however, had a massive consequence. <span class="math inline">\(\downarrow\)</span> Because critical services were concentrated in that one area, the failure triggered user-visible errors. <span class="math inline">\(\downarrow\)</span> As a response, the entire data center was drained of all traffic, despite the fact that 97% of the capacity was still perfectly functional. This overreaction highlighted a critical problem. The core question became: <span class="math inline">\(\downarrow\)</span> How can we build a system that can tolerate sub-data center faults without having to take down the entire facility?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="faults-in-dc-metas-solution" class="slide level2">
+<h2>Faults in DC: Meta’s solution</h2>
+<p><span class="citation" data-cites="narayanan2020fault">Narayanan, Shibley, and Pundir (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> an optimal placement strategy, data-driven strategy instead of over-provisioning:</p>
+<ul>
+<li class="fragment"><strong>Optimal Hardware Placement</strong>: Intelligently place diverse racks (compute, storage) across fault domains to ensure no single zone is overloaded.</li>
+<li class="fragment"><strong>Buffer Capacity</strong>: Reserve just enough resources—equal to one fault domain—to absorb all workloads if that zone fails.</li>
+<li class="fragment"><strong>Service &amp; Data Sharding</strong>: Distribute services and their data evenly across domains to maintain availability.</li>
+</ul>
+<aside class="notes">
+<p>Thus, they moved beyond simple over-provisioning and developed an intelligent, data-driven strategy. <span class="math inline">\(\downarrow\)</span> The first is Optimal Hardware Placement. They use an optimization engine to place different types of racksacross their fault domains. This ensures that no single zone becomes a critical point of failure. <span class="math inline">\(\downarrow\)</span> Second, they use a Buffer Capacity. Instead of simply having extra hardware everywhere, they reserve a specific amount of resources—the equivalent of one fault domain—to be ready to absorb workloads if a zone fails. <span class="math inline">\(\downarrow\)</span> And finally, they distribute services and their data evenly across these domains to ensure no service is ever reliant on a single point of failure. It not only finds the best place for new equipment but also continuously rebalances existing workloads and even coordinates the physical relocation of older hardware to improve the overall system balance over time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="transition-to-ai-era-demand" class="slide level2">
+<h2>Transition to AI Era: Demand</h2>
+<p>Based on <span class="citation" data-cites="mckinsey2024aipower">Company (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span> analysis:</p>
+
+<img data-src="figures/cloud-ai.png" style="display: block; margin:auto;" class="r-stretch"><aside class="notes">
+<p>So we’ve seen all the challenges data centers face in the cloud era. But if you think that problem is difficult, let’s look at the immense pressure that AI is placing on this entire system. Based on a recent analysis from McKinsey, the demand for data center capacity is on a trajectory to explode. Global data center capacity may triple by 2030. But what’s even more significant is what’s driving this growth. Future data center capacity is projected to be driven by AI workloads, with Generative AI alone accounting for nearly half of that. This isn’t a minor change; it’s a revolution in demand.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="transition-to-ai-era-expectations" class="slide level2">
+<h2>Transition to AI Era: Expectations</h2>
+<p>Peter Pietzuch in the last IEEE ICDCS 2025, <em>45th IEEE International Conference on Distributed Computing Systems</em></p>
+<ul>
+<li class="fragment"><strong>Distributed AI workloads</strong> dominate modern data centres.</li>
+<li class="fragment">Current AI stacks <strong>lack adaptivity</strong> to resource &amp; workload changes.</li>
+<li class="fragment">Next-gen systems must be <strong>adaptive by design</strong>.</li>
+</ul>
+<div class="fragment center">
+<blockquote>
+<p><strong>Datacenters</strong> must <strong>evolve</strong> to support these <strong>adaptive</strong> features, enabling more efficient resource allocation and <strong>workload management</strong>.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>The massive demand from AI is forcing a change in how we manage data centers. The focus is no longer just on scaling up but on becoming adaptive. <span class="math inline">\(\downarrow\)</span> As Peter Pietzuch pointed out at the recent IEEE ICDCS conference, distributed AI workloads now dominate data centers. These aren’t just a few large jobs; they’re a constant stream of complex, interconnected tasks. <span class="math inline">\(\downarrow\)</span> The main problem is that our current AI systems lack adaptivity. They’re often rigid and can’t change in response to real-time resource and workload changes. This leads to wasted resources and inefficiency. <span class="math inline">\(\downarrow\)</span> Because of this, the next generation of systems must be adaptive by design. This is a major shift from static, one-size-fits-all models to dynamic and flexible. <span class="math inline">\(\downarrow\)</span> In short, our data centers must evolve to support these new features, allowing for more efficient resource allocation and workload management.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ai-workload-challenges" class="slide level2">
+<h2>AI workload challenges</h2>
+<ul>
+<li class="fragment"><strong>Training</strong>: Resource-intensive and time-consuming.</li>
+<li class="fragment"><strong>Inference</strong>: Process new data in real-time.</li>
+</ul>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center" style="display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<p><img data-src="figures/parallelism.png"></p>
+<figcaption>Inspired in a figure of Keynote — Peter Pietzuch (ICDCS 2025)</figcaption>
+</figure>
+</div>
+</div>
+<aside class="notes">
+<p>But that’s only half the story. The other half is the software and systems challenge of managing these next-generation AI workloads themselves. <span class="math inline">\(\downarrow\)</span> We have training workloads that are highly demanding in terms of resources and time, but also inference workloads <span class="math inline">\(\downarrow\)</span> that require real-time processing of new data. What happens when they don’t fit on a single GPU? It requires us to think about distribution. This has led to the development of new parallelism techniques. As this figure shows, there are three primary types of parallelism.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="data-parallelism" class="slide level2">
+<h2>Data Parallelism</h2>
+
+<img data-src="./figures/data_parallelsim.png" style="display: block; margin:auto;" class="r-stretch"><div class="fragment">
+<blockquote>
+<p>Like many small generators feeding the same grid bus, all-reduce could be the frequency regulation that keeps them in sync.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>Data parallelism is the most common. <span class="math inline">\(\downarrow\)</span> It’s used when the entire AI model can fit into the memory of a single GPU. It works by: <span class="math inline">\(\downarrow\)</span> Replicating the model, <span class="math inline">\(\downarrow\)</span> Splitting the data, <span class="math inline">\(\downarrow\)</span> Synchronizing gradients. <span class="math inline">\(\downarrow\)</span> This is similar to a power grid where many small generators feed the same bus. The all-reduce operation acts like a frequency regulator that keeps all the generators in sync, ensuring the entire system remains stable and consistent. <span class="math inline">\(\downarrow\)</span> But what happens when the model is so large it won’t even fit in a single GPU’s memory? That’s when we need a different approach.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tensor-parallelism" class="slide level2">
+<h2>Tensor Parallelism</h2>
+
+<img data-src="./figures/tensor.png" style="display: block; margin:auto;" class="r-stretch"><div class="fragment">
+<blockquote>
+<p>Like a large generator with multiple synchronized turbines <span class="math inline">\(\rightarrow\)</span> a failure in one turbine stalls the generator.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>Tensor parallelism is a more complex approach used when the model itself is too large to fit on a single GPU’s memory. It works by splitting the model’s layers or tensors across multiple GPUs. For example, a single layer might have half of its data on one GPU and the other half on a second GPU. This requires synchronization between the GPUs, and the communication patterns are much more intricate and specialized. <span class="math inline">\(\downarrow\)</span> This is similar to a large generator with multiple synchronized turbines. If one turbine fails, the entire generator can’t function.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pipeline-parallelism" class="slide level2">
+<h2>Pipeline Parallelism</h2>
+
+<img data-src="./figures/pipeline.png" style="display: block; margin:auto;" class="r-stretch"><div class="fragment">
+<blockquote>
+<p>A stage outage stops the pipeline unless there’s redundancy.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>Pipeline Parallelism is also used when a model is too large for a single GPU. Instead of splitting individual layers as in tensor parallelism, it works by dividing the model into sequential stages. Each GPU is responsible for one stage of the model, processing the output from the previous GPU and passing it to the next one in the pipeline. This is like an assembly line in a factory. A single car goes through different stations, and each station performs a different task. This allows you to chain multiple GPUs together to run an extremely large model. The challenge is that a stage outage can stop the entire pipeline unless there is redundancy.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="expert-parallelism-for-mixture-of-experts" class="slide level2">
+<h2>Expert Parallelism for Mixture of Experts</h2>
+
+<img data-src="https://bentoml.com/llm/assets/images/ep-inference-8a8197f4144207ffddb62e81a4704a41.png" class="r-stretch quarto-figure-center"><p class="caption">Hybrid Parallelism Diagram original font:<a href="https://bentoml.com/llm/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism">https://bentoml.com/llm/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism</a></p><aside class="notes">
+<p>We’ve looked at the general-purpose parallelism techniques for large models. In an MoE model, only a small, specific subset of the model’s ‘experts’ are activated for each input. Expert parallelism takes advantage of this by strategically splitting the experts themselves across different devices. As you can see here, each GPU holds only a subset of experts, rather than a full copy of the entire network. When a token needs to be processed, a router sends it to the specific GPU where its expert’s full weights are stored. This approach is highly effective because it is memory-efficient. It avoids the memory overhead of replicating the full expert network on every device. This is what allows us to train and run much larger MoE models that would otherwise be impossible to fit on a single machine or even a standard cluster.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="hybrid-parallelism-combining-techniques" class="slide level2">
+<h2>Hybrid Parallelism: Combining Techniques</h2>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://bentoml.com/llm/assets/images/dptp-e941197be9b1764dba8d90d2feb20069.png"></p>
+<figcaption>Hybrid Parallelism Diagram original font:<a href="https://bentoml.com/llm/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism">https://bentoml.com/llm/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism</a></figcaption>
+</figure>
+</div>
+</div>
+<div class="fragment">
+<p><em>Megatron-LM</em> combined <em>tensor</em> and <em>pipeline</em> parallelism to train a model with over <strong>8.3 billion parameters</strong>.</p>
+</div>
+<aside class="notes">
+<p>In practice, a single strategy is often not enough. To train models with trillions of parameters, we have to use hybrid parallelism. A typical hybrid setup, like the one shown here, combines Data Parallelism and Tensor Parallelism. We use Data Parallelism by replicating the model across different groups of GPUs. Then, within each of those groups, we use Tensor Parallelism to split the model’s layers across the GPUs, allowing the model to fit into memory. If we have eight GPUs, we could apply tensor parallelism across the first four GPUs, and then replicate that entire setup across the remaining four using data parallelism. This allows us to both increase the total training speed and run models that are far larger than any single GPU could handle. One of the first models to successfully demonstrate this on a massive scale was Megatron-LM, developed by NVIDIA.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ai-era-challenges-more-complexity" class="slide level2">
+<h2>AI-Era Challenges: More Complexity</h2>
+<ul>
+<li class="fragment"><p><strong>Elasticity</strong>: How do we dynamically scale a multi-GPU parallel training job without restarting it?</p></li>
+<li class="fragment"><p><strong>Redeployment</strong>: How do we live-migrate a pipeline or a tensor-parallel workload across GPUs to balance load?</p></li>
+<li class="fragment"><p><strong>Scheduling</strong>: How do we allocate not just a single GPU, but an entire group of interconnected GPUs with specific communication requirements?</p></li>
+<li class="fragment"><p><strong>Failure Management</strong>: How do we recover from a single GPU failure in a tensor-parallel pipeline without bringing down the entire system?</p></li>
+</ul>
+<aside class="notes">
+<p>These new types of parallel jobs—data makes our core data center challenges even harder to solve. <span class="math inline">\(\downarrow\)</span> Take Elasticity. In the old cloud era, we would simply spin up a new virtual machine. But how do we dynamically scale a massive, multi-GPU training job without having to restart it from scratch? <span class="math inline">\(\downarrow\)</span> Similarly, Redeployment is no longer just about moving a web server. We now have to figure out how to live-migrate a complex pipeline or a tensor-parallel workload across GPUs to balance the load. <span class="math inline">\(\downarrow\)</span> And we aren’t just allocating a single GPU. We have to allocate an entire group of interconnected GPUs that have specific, high-bandwidth communication requirements.<span class="math inline">\(\downarrow\)</span> And finally, If a single GPU fails in the middle of a tensor-parallel pipeline, how do we recover without bringing down the entire system?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-need-of-the-edge" class="slide level2">
+<h2>The need of the Edge</h2>
+<div style="text-align: center;">
+<p><img data-src="./figures/cloud-continuum.png" style="width:50.0%"></p>
+</div>
+<aside class="notes">
+<p>We’ve talked about the big, centralized data centers. But to truly deliver on the promises of AI, we need to go beyond that. This brings us to the idea of the Edge. The main cloud is great for training AI models. But for using them it’s not always the best. We need to bring the computer power closer to the user. This diagram helps us understand why. At the top, we have the Cloud. This is where we have huge power and storage, but also higher latency because it’s farther away. This is where we train models. As we move down to the Fog and then the Edge, we get closer to the user and the data source. At the Edge, we have devices like sensors and phones. This is where we get the benefit of lower latency and real-time processing. The key point is that it’s not about choosing just one. It’s about a connected and coordinated system that includes all three—from the large data centers in the cloud to the small devices at the edge.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-multicloud-challenge" class="slide level2 smaller">
+<h2>The Multicloud Challenge</h2>
+
+<img data-src="./figures/multicloud.png" style="display: block;margin-left: auto;margin-right: auto;" class="r-stretch"><aside class="notes">
+<p>We’ve talked about a single cloud. But today, many companies use multiple clouds. They use services from different providers at the same time. This multicloud approach makes our problem even more difficult. The system now has to make decisions across a whole network of clouds, not just one. We have to make sure our applications can run on any cloud without being locked in. We need to constantly find the cheapest cloud to run our tasks, without hurting performance. It’s hard to keep security rules the same across different clouds. Services in different clouds need to talk to each other, and so on…</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="challenges-opportunities" class="slide level2">
+<h2>Challenges &amp; Opportunities</h2>
+<ul>
+<li class="fragment">Evolve existing frameworks to support distributed AI training and inference across the entire cloud continuum.</li>
+<li class="fragment">Efficient systems for right-sizing, rebalancing, and scheduling diverse workloads.</li>
+<li class="fragment">Resilient to failure at every level, from a single rack in the data center to a disconnected device on the edge.</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Infrastructure to support the next-generation of workloads, in the massive scale and also in the local and regional scale of fog and edge.</p>
+</blockquote>
+</div>
+<aside class="notes">
+<p>Just to conclude the message is clear: the challenges we face today require newer approaches. We need to build a new computing infrastructure that is smart, adaptable, and resilient. This is a system that spans the entire continuum, from the data center to the user. <span class="math inline">\(\downarrow\)</span> We can’t just put AI on top of old systems; we need new frameworks designed to handle these distributed AI workloads across the entire cloud-to-edge continuum. <span class="math inline">\(\downarrow\)</span> Second, we need systems that can automatically right-size, rebalance, and schedule diverse workloads in real-time. <span class="math inline">\(\downarrow\)</span> And finally, we have to build resilience into every layer—from a single rack in the data center to a disconnected device on the edge—so the system can handle failures without disrupting service. <span class="math inline">\(\downarrow\)</span> Take home message, this is about building a coordinated infrastructure that supports the next generation of workloads, whether they are on a massive scale in the cloud or a local scale on the edge.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chen2024learning" class="csl-entry" role="listitem">
+Chen, Chang-Lin, Hanhan Zhou, Jiayu Chen, Mohammad Pedramfar, Tian Lan, Zheqing Zhu, Chi Zhou, et al. 2024. <span>“Learning-Based Two-Tiered Online Optimization of Region-Wide Datacenter Resource Allocation.”</span> <em>IEEE Transactions on Network and Service Management</em>.
+</div>
+<div id="ref-mckinsey2024aipower" class="csl-entry" role="listitem">
+Company, McKinsey &amp;. 2024. <span>“AI Power: Expanding Data Center Capacity to Meet Growing Demand.”</span> <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/ai-power-expanding-data-center-capacity-to-meet-growing-demand">https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/ai-power-expanding-data-center-capacity-to-meet-growing-demand</a>.
+</div>
+<div id="ref-jian2024drs" class="csl-entry" role="listitem">
+Jian, Zhaolong, Xueshuo Xie, Yaozheng Fang, Yibing Jiang, Ye Lu, Ankan Dash, Tao Li, and Guiling Wang. 2024. <span>“DRS: A Deep Reinforcement Learning Enhanced Kubernetes Scheduler for Microservice-Based System.”</span> <em>Software: Practice and Experience</em> 54 (10): 2102–26.
+</div>
+<div id="ref-narayanan2020fault" class="csl-entry" role="listitem">
+Narayanan, Aravind, Elisa Shibley, and Mayank Pundir. 2020. <span>“<span class="nocase">Fault tolerance through optimal workload placement</span>.”</span> Engineering at Meta; <a href="https://engineering.fb.com/2020/09/08/data-center-engineering/fault-tolerance-through-optimal-workload-placement/" class="uri">https://engineering.fb.com/2020/09/08/data-center-engineering/fault-tolerance-through-optimal-workload-placement/</a>.
+</div>
+</div>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Datacenter Technical Seminar (<em>Postgrunn - University of South-Eastern Norway - September 2025</em>)</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
