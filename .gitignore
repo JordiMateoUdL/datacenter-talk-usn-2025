@@ -1,2 +1,4 @@
 /.quarto/
 docs
+.DS_Store
+**.bkp
